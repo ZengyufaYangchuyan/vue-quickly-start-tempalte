@@ -11,4 +11,13 @@ vue -v
 官网地址：https://nodejs.org/zh-cn/<br>
 教程地址：https://www.runoob.com/nodejs/nodejs-tutorial.html<br>
 #### 2.克隆项目
-项目地址: 
+HTTPS：https://github.com/ZengyufaYangchuyan/vue-quickly-start-tempalte.git<br>
+SSH：git@github.com:ZengyufaYangchuyan/vue-quickly-start-tempalte.git<br>
+#### 3.下载依赖包
+1.进入项目目录<br>
+2.打开终端<br>
+3.在终端输入：<b>npm install</b>（在安装了cnpm的情况下输入：<b>cnpm install</b>），等待上述依赖包下载完成<br>
+#### 4.运行项目
+1.进入项目目录<br>
+2.打开终端<br>
+3.在终端输入：<b>npm run dev</b>
