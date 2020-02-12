@@ -7,7 +7,8 @@ node -v
 npm -v
 vue -v
 ### 安装步骤
-#### node环境配置
-node 下载并安装，下载地址请查看官网地址，安装教程请查看教程地址<br>
-node 官网地址：https://nodejs.org/zh-cn/<br>
-node 教程地址：https://www.runoob.com/nodejs/nodejs-tutorial.html<br>
+#### 1.node环境配置，下载并安装
+官网地址：https://nodejs.org/zh-cn/<br>
+教程地址：https://www.runoob.com/nodejs/nodejs-tutorial.html<br>
+#### 2.克隆项目
+项目地址: 
