@@ -1,6 +1,6 @@
 const entry = require('./entry');
 const plugins = require('./plugins');
-const rules  = require('./rules');
+const module  = require('./module');
 const { config: output } = require('./output');
 
 /**
@@ -12,11 +12,10 @@ const { config: output } = require('./output');
  * @property {Object} config.output 输出
  */
 let config = {
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'developement',
     entry,
     plugins,
-    module: {
-        rules
-    },
+    module,
     output
 };
 
