@@ -1,8 +1,10 @@
+const path = require('path');
+
 let config = {
     /**
     * @description 主入口
     */
-    main: '../../main.js',
+    main: path.resolve('../../', 'main.js'),
     /**
     * @description 长效缓存
     */
