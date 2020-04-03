@@ -21,13 +21,13 @@ const isProduction = mode === 'production';
  */
 const devtool = isProduction ? 'cheap-module-source-map' : 'cheap-module-eval-source-map';
 
-
-
 let config = {
     mode,
     devtool,
     entry,
     output
 };
+
+console.log(config);
 
 module.exports = config;

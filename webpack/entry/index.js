@@ -7,7 +7,7 @@ let config = {
      * @type {Array[string]|Object|string}
      */
     entry: {
-        main: path.resolve(baseDir, '/main.js')
+        main: path.resolve(baseDir, '../main.js')
     }
 };
 
