@@ -9,7 +9,7 @@ const mode = process.env.NODE_ENV;
 
 /**
  * 是否为开发模式
- * @type {boolean}
+ * @type {Boolean}
  */
 const isProduction = mode === 'production';
 
