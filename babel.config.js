@@ -9,13 +9,6 @@ let config = {
         [
             "@babel/preset-env",
             {
-                targets: {
-                    browsers: [
-                        'ie >= 6',
-                        '>2%',
-                        'not dead'
-                    ]
-                },
                 modules: false,
                 useBuiltIns: "usage",
                 corejs: 3

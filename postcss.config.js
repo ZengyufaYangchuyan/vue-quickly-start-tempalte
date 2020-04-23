@@ -1,13 +1,24 @@
+/**
+ * 自动添加css前缀
+ */
+const autoprefixer = require('autoprefixer');
+/**
+ * 生成雪碧图
+ */
+const {openSprites, sprites} = require('./webpack/postcss/sprites');
 
 /**
  * 
  * @param {Object} file extname, dirname, basename
  */
 const getConfig = ({ file, options, env}) => {
-    let config = {
-        
-    }
-    return config;
+    return {
+        parser: file.extname === '.sss' ? 'sugarss' : '',
+        plugins: [
+            ...(openSprites ? [sprites()] : []),
+            autoprefixer
+        ]
+    };
 }
 
 module.exports = getConfig;

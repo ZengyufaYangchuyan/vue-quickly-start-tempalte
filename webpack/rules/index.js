@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {baseDir} = require('../config/direction')
+const {WebpackPostcssDir} = require('../config/direction');
 
 /**
  * 规则配置
@@ -11,8 +11,28 @@ let baseRules = [
         loader: 'babel-loader'
     },
     {
-        test: ,
-        loader: 
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
+        loader: 'url-loader',
+        options: {
+            limit: 3072,
+            name: `images/[name].[contenthash].[ext][query]`
+        }
+    },
+    {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\..*)?$/i,
+        loader: 'url-loader',
+        options: {
+            limit: 3072,
+            name: `media/[name].[contenthash].[ext][query]`
+        }
+    },
+    {
+        test: /\.(woff2?|eot|ttf|otf)(\..*)?$/g,
+        loader: 'url-loader',
+        options: {
+            limit: 3072,
+            name: `fonts/[name].[contenthash].[ext][query]`
+        }
     }
 ];
 
@@ -30,7 +50,7 @@ const setAllCssRule = (isPorduction) => {
         {
             loader: 'postcss-loader',
             options: {
-                path: baseDir
+                path: WebpackPostcssDir
             }
         }
     ]

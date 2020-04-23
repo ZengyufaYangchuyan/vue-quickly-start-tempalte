@@ -1,5 +1,5 @@
 const path = require('path');
-const {assetJsDirName, buildAssetJsDir} = require('../config/direction');
+const {BuildStaticDir} = require('../config/direction');
 
 let config = {
     /**
@@ -7,9 +7,9 @@ let config = {
      * @type {Object|Array[string]|string}
      */
     output: {
-        fileName: `[name].[chunkhash].js`,
-        path: buildAssetJsDir,
-        publicPath: `/${assetJsDirName}/`,
+        fileName: `js/[name].[chunkhash].js`,
+        path: BuildStaticDir,
+        publicPath: ``,
         vendor: []
     }
 };

@@ -1,0 +1,5 @@
+# 我们需要运行的浏览器环境
+# 支持ie大于等于6
+ie >= 6
+# 默认配置 > 0.5%, last 2 versions, Firefox ESR, not dead
+defaults
