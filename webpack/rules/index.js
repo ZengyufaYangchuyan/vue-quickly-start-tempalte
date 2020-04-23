@@ -6,6 +6,12 @@ const {WebpackPostcssDir} = require('../config/direction');
  */
 let baseRules = [
     {
+        test: /\.(js|vue)$/,
+        exclude: /node_modules|bower_components/,
+        enforce: 'pre',
+        loader: 'eslint-loader'
+    },
+    {
         test: /\.jsx?$/,
         exclude: /node_modules|bower_components/,
         loader: 'babel-loader'
@@ -104,9 +110,10 @@ const setAllCssRule = (isPorduction) => {
 
 /**
  * 获取插件配置
- * @param {Boolean} isPorduction 是否为产品
  */
-const getConfig = (isProduction) => {
+const getConfig = () => {
+    // 是否为产品
+    let isProduction = process.env.NODE_ENV === 'production'
     let rules = [
         ...baseRules,
         ...setAllCssRule(isProduction)
