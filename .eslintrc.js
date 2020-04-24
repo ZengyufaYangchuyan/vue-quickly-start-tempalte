@@ -32,6 +32,16 @@ let config = {
         es6: true
     },
     /**
+     * 配置文件可以从基本配置扩展启用的规则集
+     * @type {Array}
+     * @example 一个指定配置的字符串
+     * @example 一个字符串数组：每个附加配置扩展了前面的配置
+     */
+    extends: [
+        'plugin:vue/vue3-recommended',
+        ''
+    ],
+    /**
      * 脚本在执行期间访问的其他全局变量
      * @description 当访问当前源文件内未定义的变量时，no-undef 规则将发出警告。
      * 如果你想在一个源文件里使用全局变量，推荐你在 ESLint 中定义这些全局变量，这样 ESLint 就不会发出警告了。
@@ -101,7 +111,18 @@ let config = {
          * @link https://cloud.tencent.com/developer/section/1135686
          */
         'no-eval': 'error',
-        
+        /**
+         * 此规则强制执行一致的缩进样式
+         * @link https://cloud.tencent.com/developer/section/1135626
+         */
+        'indent': ['error', 4],
+        /**
+         * 此规则强制使用分号
+         * @description 尽管ASI允许您在编码风格上拥有更多的自由，但它也可以让您的代码以意想不到的方式行事，不管您是否使用分号。
+         * 因此，最好知道ASI何时发生，何时不发生，并让ESLint保护您的代码免受这些潜在意外情况的影响。
+         * @link https://cloud.tencent.com/developer/section/1135822
+         */
+        'semi': ['error', 'always']
     }
 };
 
