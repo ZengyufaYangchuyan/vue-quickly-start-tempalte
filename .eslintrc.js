@@ -1,5 +1,12 @@
 let isProduction = process.env.NODE_ENV === 'production';
 
+/**
+ * eslint配置
+ * @description ESLint 是一个代码规范和错误检查工具，有以下几个特性。所有东西都是可以插拔的。
+ * 你可以调用任意的 rule api 或者 formatter api 去打包或者定义 rule or formatter。
+ * 任意的 rule 都是独立的。没有特定的 coding style，你可以自己配置。
+ * @link https://cloud.tencent.com/developer/doc/1078
+ */
 let config = {
     /**
      * 是否为根目录
@@ -38,8 +45,8 @@ let config = {
      * @example 一个字符串数组：每个附加配置扩展了前面的配置
      */
     extends: [
-        'plugin:vue/vue3-recommended',
-        ''
+        'eslint:recommended',
+        'plugin:vue/vue3-recommended'
     ],
     /**
      * 脚本在执行期间访问的其他全局变量

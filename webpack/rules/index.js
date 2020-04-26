@@ -2,7 +2,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {WebpackPostcssDir} = require('../config/direction');
 
 /**
+ * 是否为产品
+ * @type {boolean}
+ */
+let isProduction = process.env.NODE_ENV === 'production'
+
+/**
  * 规则配置
+ * @type {Array}
  */
 let baseRules = [
     {
@@ -11,6 +18,15 @@ let baseRules = [
         enforce: 'pre',
         loader: 'eslint-loader'
     },
+    {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+    },
+    // {
+    //     test: /\.tsx?$/,
+    //     loader: "ts-loader",
+    //     options: { appendTsSuffixTo: [/\.vue$/] }
+    // },
     {
         test: /\.jsx?$/,
         exclude: /node_modules|bower_components/,
@@ -44,14 +60,13 @@ let baseRules = [
 
 /**
  * 设置样式加载规则
- * @param {Boolean} isPorduction 是否为产品
  */
-const setAllCssRule = (isPorduction) => {
+const setAllCssRule = () => {
     /**
      * 在每项样式规则中的基础规则
      */
     let baseCssRules = [
-        isPorduction ? MiniCssExtractPlugin.loader : 'style-loader',
+        isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
         'css-loader',
         {
             loader: 'postcss-loader',
@@ -108,17 +123,14 @@ const setAllCssRule = (isPorduction) => {
     return packgageCssRules
 }
 
-/**
- * 获取插件配置
- */
-const getConfig = () => {
-    // 是否为产品
-    let isProduction = process.env.NODE_ENV === 'production'
-    let rules = [
+module.exports = {
+    /**
+     * 创建模块时，匹配请求的规则数组
+     * @description 这些规则能够修改模块的创建方式。
+     * 这些规则能够对模块(module)应用 loader，或者修改解析器(parser)。
+     */
+    rules: [
         ...baseRules,
-        ...setAllCssRule(isProduction)
-    ];
-    return rules;
-}
-
-module.exports = getConfig;
+        ...setAllCssRule()
+    ]
+};

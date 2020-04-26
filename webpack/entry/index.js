@@ -1,5 +1,5 @@
 const path = require('path');
-const {baseDir} = require('../config/direction')
+const {WebpackDir} = require('../config/direction')
 
 let config = {
     /**
@@ -7,7 +7,7 @@ let config = {
      * @type {Array[string]|Object|string}
      */
     entry: {
-        main: path.resolve(baseDir, '../main.js')
+        main: path.resolve(WebpackDir, '../main.js')
     }
 };
 

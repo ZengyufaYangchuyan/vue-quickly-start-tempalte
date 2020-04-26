@@ -115,21 +115,23 @@ const getDirName = (parentDirName, currentDir) => {
 }
 
 
-const baseDir = path.resolve(__dirname, '../../../');
-const buildDir = path.resolve(baseDir, `./build`);
+const BaseDir = path.resolve(__dirname, '../../../');
+const BuildDir = path.resolve(BaseDir, `./build`);
 
 /**
  * 项目构建地址配置
  */
-let buildPathConfig = setPathConfig({config: {}, parentDirName: 'Build',  parentDir: buildDir, currentDir: pathTreeConfig[0][1]});
+let buildPathConfig = setPathConfig({config: {}, parentDirName: 'Build',  parentDir: BuildDir, currentDir: pathTreeConfig[0][1]});
 
 /**
  * 基础路径配置
  */
-let basePatchConfig = setPathConfig({config: {}, parentDir: baseDir, currentDir: pathTreeConfig});
+let basePatchConfig = setPathConfig({config: {}, parentDir: BaseDir, currentDir: pathTreeConfig});
 
 
 let config = {
+    BaseDir,
+    BuildDir,
     ...buildPathConfig,
     ...basePatchConfig
 };

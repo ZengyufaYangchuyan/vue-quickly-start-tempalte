@@ -1,5 +1,8 @@
-const {entry} = require('./entry')
-const {output} = require('./output')
+const {entry} = require('./entry');
+const {output} = require('./output');
+const {rules} = require('./rules');
+const {devServer} = require('./config/server');
+const {plugins} = require('./plugins');
 /**
  * 模式
  * @type {string}
@@ -25,6 +28,15 @@ let config = {
     mode,
     devtool,
     entry,
+    /**
+     * 可解析的扩展名
+     */
+    extensions: ['.ts', ".tsx", '.js'],
+    devServer,
+    module: {
+        rules
+    },
+    plugins,
     output
 };
 

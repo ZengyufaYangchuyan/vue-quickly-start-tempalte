@@ -1,0 +1,12 @@
+{
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ],
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "sourceMap": true
+    }
+}

@@ -7,10 +7,10 @@ let config = {
      * @type {Object|Array[string]|string}
      */
     output: {
-        fileName: `js/[name].[chunkhash].js`,
+        filename: `js/[name].[contenthash].js`,
         path: BuildStaticDir,
-        publicPath: ``,
-        vendor: []
+        publicPath: ``
+        // vendor: []
     }
 };
 
