@@ -5,8 +5,8 @@
   "description": "this's an quickly start tempalte for vue",
   "main": "main.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack/index.js --progress --colors --devtool inline-source-map --hot",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack/index.js --progress --colors --devtool cheap-module-source-map",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --progress --colors --hot",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --progress --colors",
     "build:dll": "webpack --config ./config/webpack/dll/index.js",
     "test": "npm run test"
   },

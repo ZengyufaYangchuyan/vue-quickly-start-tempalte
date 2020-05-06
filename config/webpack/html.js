@@ -1,5 +1,5 @@
 const path = require('path');
-const {BaseDir, SrcStaticImagesDir} = require('../direction');
+const {BaseDir, SrcStaticImagesDir} = require('./direction');
 
 const config = {
     title: 'vue-quickly-start-template',

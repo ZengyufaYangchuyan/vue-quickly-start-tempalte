@@ -1,5 +1,5 @@
 const path = require('path');
-const {SrcStaticImagesSpritesDir, BuildStaticImagesSpritesDir} = require('../../config/direction');
+const {SrcStaticImagesSpritesDir, BuildStaticImagesSpritesDir} = require('./direction');
 const sprites = require('postcss-sprites');
 
 /**

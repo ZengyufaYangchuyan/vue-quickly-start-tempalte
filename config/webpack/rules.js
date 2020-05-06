@@ -1,11 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {WebpackPostcssDir} = require('../config/direction');
 
 /**
  * 是否为产品
  * @type {boolean}
  */
-let isProduction = process.env.NODE_ENV === 'production'
+let isProduction = process.env.NODE_ENV === 'production';
 
 /**
  * 规则配置
@@ -69,10 +68,7 @@ const setAllCssRule = () => {
         isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
         'css-loader',
         {
-            loader: 'postcss-loader',
-            options: {
-                path: WebpackPostcssDir
-            }
+            loader: 'postcss-loader'
         }
     ]
     /**
@@ -121,16 +117,16 @@ const setAllCssRule = () => {
     })
 
     return packgageCssRules
-}
-
-module.exports = {
-    /**
-     * 创建模块时，匹配请求的规则数组
-     * @description 这些规则能够修改模块的创建方式。
-     * 这些规则能够对模块(module)应用 loader，或者修改解析器(parser)。
-     */
-    rules: [
-        ...baseRules,
-        ...setAllCssRule()
-    ]
 };
+
+/**
+ * 创建模块时，匹配请求的规则数组
+ * @description 这些规则能够修改模块的创建方式。
+ * 这些规则能够对模块(module)应用 loader，或者修改解析器(parser)。
+ */
+const rules = [
+    ...baseRules,
+    ...setAllCssRule()
+];
+
+module.exports = rules;

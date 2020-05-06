@@ -115,7 +115,7 @@ const getDirName = (parentDirName, currentDir) => {
 }
 
 
-const BaseDir = path.resolve(__dirname, '../../../');
+const BaseDir = path.resolve(__dirname, '../../');
 const BuildDir = path.resolve(BaseDir, `./build`);
 
 /**

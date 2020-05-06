@@ -5,10 +5,10 @@ const autoprefixer = require('autoprefixer');
 /**
  * 生成雪碧图
  */
-const {openSprites, sprites} = require('./webpack/postcss/sprites');
+const {openSprites, sprites} = require('./config/webpack/sprites');
 
 /**
- * 
+ *
  * @param {Object} file extname, dirname, basename
  */
 const getConfig = ({ file, options, env}) => {
