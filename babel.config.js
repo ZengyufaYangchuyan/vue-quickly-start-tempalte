@@ -1,10 +1,4 @@
 let config = {
-    /**
-     * @type {Boolean}
-     * @default false
-     * @description 指定的目录将用来缓存 loader 的执行结果
-     */
-    cacheDirectory: true,
     presets: [
         [
             "@babel/preset-env",

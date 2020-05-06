@@ -28,8 +28,16 @@ let baseRules = [
     // },
     {
         test: /\.jsx?$/,
-        exclude: /node_modules|bower_components/,
-        loader: 'babel-loader'
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+            /**
+             * @type {Boolean}
+             * @default false
+             * @description 指定的目录将用来缓存 loader 的执行结果
+             */
+            cacheDirectory: true,
+        }
     },
     {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
