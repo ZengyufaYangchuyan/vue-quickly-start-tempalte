@@ -9,7 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --progress --colors",
     "build:dll": "webpack --config ./config/webpack/dll/index.js",
     "test": "npm run test",
-    "commit": "git-cz"
+    "commit": "git add . && git-cz"
   },
   "repository": {
     "type": "git",
