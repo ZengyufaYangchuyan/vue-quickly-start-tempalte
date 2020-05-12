@@ -122,7 +122,7 @@ let config = {
          * 此规则强制执行一致的缩进样式
          * @link https://cloud.tencent.com/developer/section/1135626
          */
-        'indent': ['error', 4],
+        'indent': ['error', 2, 2],
         /**
          * 此规则强制使用分号
          * @description 尽管ASI允许您在编码风格上拥有更多的自由，但它也可以让您的代码以意想不到的方式行事，不管您是否使用分号。

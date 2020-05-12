@@ -1,5 +1,5 @@
 import Vue from 'vue';
-
+import App from './App';
 /**
  * 当前是否处于产品状态
  * @type {Boolean}
@@ -14,10 +14,8 @@ let isProduction = process.env.NODE_ENV === 'production';
 Vue.config.devtools = isProduction;
 
 let vm = new Vue({
-    el: "#app",
-    data () {
-        return {}
-    }
+  components: {App},
+  template: '<App/>'
 });
 
 vm.$mount('#app');

@@ -31,7 +31,7 @@ const devtool = isProduction ? 'cheap-module-source-map' : 'cheap-module-eval-so
  * 如果传递一个数组，那么数组的每一项都会执行。
  */
 const entry = {
-    main: path.resolve(__dirname, './main.js')
+  main: path.resolve(__dirname, './src/main.js')
 };
 
 /**
@@ -45,42 +45,43 @@ const baseBuildPath = path.resolve(__dirname, './dist');
  * bundle、asset 和其他你所打包或使用 webpack 载入的任何内容。
  */
 const output = {
-    filename: `js/[name]_[hash].js`,
-    path: baseBuildPath,
-    publicPath: ''
+  filename: `js/[name]_[hash].js`,
+  path: baseBuildPath,
+  publicPath: ''
 };
 
 /**
  * 如何处理项目中的不同类型的模块
  */
 const modules = {
-    /**
-     * 防止 webpack 解析那些任何与给定正则表达式相匹配的文件
-     * @description 忽略的文件中不应该含有 import, require, define 的调用，或任何其他导入机制。
-     * 忽略大型的 library 可以提高构建性能。
-     */
-    noParse: function (content) {
-        return /jquery|loadsh/.test(content);
-    },
-    rules
+  /**
+   * 防止 webpack 解析那些任何与给定正则表达式相匹配的文件
+   * @description 忽略的文件中不应该含有 import, require, define 的调用，或任何其他导入机制。
+   * 忽略大型的 library 可以提高构建性能。
+   */
+  noParse: function (content) {
+    return /jquery|loadsh/.test(content);
+  },
+  rules
 };
 
 /**
  * 配置模块如何解析
  */
 const resolve = {
-    /**
-     * 起别名
-     * @description 创建 import 或 require 的别名，来确保模块引入变得更简单
-     */
-    alias: {
-        src: path.resolve(__dirname, './src')
-    },
-    /**
-     * 自动解析规定的扩展
-     * @description 能够使开发人员在引入模块时不带扩展
-     */
-    extensions: ['.ts', ".tsx", '.js']
+  /**
+   * 起别名
+   * @description 创建 import 或 require 的别名，来确保模块引入变得更简单
+   */
+  alias: {
+    vue$: "vue/dist/vue.esm.js",
+    src: path.resolve(__dirname, './src')
+  },
+  /**
+   * 自动解析规定的扩展
+   * @description 能够使开发人员在引入模块时不带扩展
+   */
+  extensions: ['.vue', '.ts', ".tsx", '.js']
 }
 
 /**
@@ -94,46 +95,46 @@ const target = 'web';
  * @description 例如，如果一个资源超过 250kb，webpack 会对此输出一个警告来通知你。
  */
 const performance = {
-    /**
-     * 打开/关闭提示
-     * @description 当找到提示时，告诉 webpack 抛出一个错误或警告
-     * @default 'warning'
-     */
-    hints: isProduction ? 'error' : 'warning',
-    /**
-     * 入口最大大小
-     * @description 此选项根据入口起点的最大体积，控制 webpack 何时生成性能提示。
-     * @type {Int}
-     * @default 250000
-     */
-    maxEntrypointSize: 250000,
-    /**
-     * 资源(asset)是从 webpack 生成的任何文件
-     * @description 此选项根据单个资源体积，控制 webpack 何时生成性能提示
-     * @type {Int}
-     * @default 250000
-     */
-    maxAssetSize: 250000,
-    /**
-     * 此属性允许 webpack 控制用于计算性能提示的文件
-     * @param {*} assetFilename 生成文件的名字
-     */
-    assetFilter: function (assetFilename) {
-        return !(/\.map$/.test(assetFilename))
-    }
+  /**
+   * 打开/关闭提示
+   * @description 当找到提示时，告诉 webpack 抛出一个错误或警告
+   * @default 'warning'
+   */
+  hints: isProduction ? 'error' : 'warning',
+  /**
+   * 入口最大大小
+   * @description 此选项根据入口起点的最大体积，控制 webpack 何时生成性能提示。
+   * @type {Int}
+   * @default 250000
+   */
+  maxEntrypointSize: 250000,
+  /**
+   * 资源(asset)是从 webpack 生成的任何文件
+   * @description 此选项根据单个资源体积，控制 webpack 何时生成性能提示
+   * @type {Int}
+   * @default 250000
+   */
+  maxAssetSize: 250000,
+  /**
+   * 此属性允许 webpack 控制用于计算性能提示的文件
+   * @param {*} assetFilename 生成文件的名字
+   */
+  assetFilter: function (assetFilename) {
+    return !(/\.map$/.test(assetFilename))
+  }
 };
 
 let config = {
-    mode,
-    devtool,
-    entry,
-    output,
-    module: modules,
-    resolve,
-    target,
-    devServer,
-    plugins,
-    performance
+  mode,
+  devtool,
+  entry,
+  output,
+  module: modules,
+  resolve,
+  target,
+  devServer,
+  plugins,
+  performance
 };
 
 module.exports = config;
