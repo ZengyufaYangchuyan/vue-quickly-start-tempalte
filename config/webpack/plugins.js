@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const HtmlWebpackPluginConfig = require('./html');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -28,9 +27,9 @@ let plugins = [
    * 将css内容拆分成独立的文件引入模板中
    */
   ...(isProduction ? [new MiniCssExtractPlugin({
-    filename: 'images/[name].[hash].css',
-    chunkFilename: 'images/[id].[hash].css',
+    filename: 'css/[name].[hash].css',
+    chunkFilename: 'css/[id].[hash].css',
   })] : [])
-]
+];
 
 module.exports = plugins;

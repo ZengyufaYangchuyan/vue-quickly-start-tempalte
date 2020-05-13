@@ -3,13 +3,12 @@ const rules = require('./config/webpack/rules');
 const plugins = require('./config/webpack/plugins');
 const devServer = require('./config/webpack/devServer');
 
-
 /**
  * 自动启用模式
  * @description 根据传入的环境变量，设定当前模式，webpack会自动启用某些插件
  * @example 'production' 'development' 'none'
  */
-const mode = process.env.NODE_ENV
+const mode = process.env.NODE_ENV;
 
 /**
  * 当前开发的模式
@@ -82,7 +81,7 @@ const resolve = {
    * @description 能够使开发人员在引入模块时不带扩展
    */
   extensions: ['.vue', '.ts', ".tsx", '.js']
-}
+};
 
 /**
  * 构建指定环境
@@ -120,7 +119,31 @@ const performance = {
    * @param {*} assetFilename 生成文件的名字
    */
   assetFilter: function (assetFilename) {
-    return !(/\.map$/.test(assetFilename))
+    return !(/\.map$/.test(assetFilename));
+  }
+};
+
+/**
+ * 分割JS代码
+ */
+const splitChunks = {
+  chunks: "async",
+  minSize: 30000,
+  minChunks: 1,
+  maxAsyncRequests: 5,
+  maxInitialRequests: 3,
+  automaticNameDelimiter: '~',
+  name: true,
+  cacheGroups: {
+    vendors: {
+      test: /[\\/]node_modules[\\/]/,
+      priority: -10
+    },
+    default: {
+      minChunks: 2,
+      priority: -20,
+      reuseExistingChunk: true
+    }
   }
 };
 
@@ -134,7 +157,10 @@ let config = {
   target,
   devServer,
   plugins,
-  performance
+  performance,
+  optimization: {
+    splitChunks
+  }
 };
 
 module.exports = config;

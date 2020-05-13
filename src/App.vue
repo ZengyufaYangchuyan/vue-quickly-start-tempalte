@@ -8,7 +8,14 @@ export default {
 </script>
 
 <template>
-  <div>123</div>
+  <div class="app">
+    123a
+  </div>
 </template>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+.app {
+  display flex
+  color red
+}
+</style>

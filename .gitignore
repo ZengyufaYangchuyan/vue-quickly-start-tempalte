@@ -1,2 +1,9 @@
+# 在添加了新的gitnore选项时，需要删除git缓存
+# git rm -r --cached .
+# git add .
+# git commit -m 'update .gitignore'
+
 # 模块包
 /node_modules/
+# 打包文件
+/dist/
