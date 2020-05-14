@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const webpack = require('webpack');
 
 /**
  * 是否为产品
@@ -19,6 +20,11 @@ let plugins = [
    */
   new CleanWebpackPlugin(),
   new VueLoaderPlugin(),
+  new webpack.HashedModuleIdsPlugin({
+    hashFunction: 'sha256',
+    hashDigest: 'hex',
+    hashDigestLength: 20
+  }),
   /**
    * 指定html模板和设置生成模板规则
    */

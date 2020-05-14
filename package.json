@@ -5,7 +5,7 @@
   "description": "this's an quickly start tempalte for vue",
   "main": "main.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --progress --colors --hot",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --progress --colors",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --progress --colors",
     "build:dll": "webpack --config ./config/webpack/dll/index.js",
     "test": "npm run test",
@@ -50,6 +50,7 @@
     "gitmoji-cli": "^3.2.4",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.5",
+    "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",

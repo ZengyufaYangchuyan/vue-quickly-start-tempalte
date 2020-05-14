@@ -43,7 +43,16 @@ let baseRules = [
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
     loader: 'url-loader',
     options: {
-      limit: 3072,
+      /**
+       * 是否开启esModule模式
+       * @description file-loader在新版本中esModule默认为true，因此手动设置为false
+       */
+      esModule: false,
+      /**
+       * 在此限制以下将被打包为Data URL
+       * @description 限制单位为byte
+       */
+      limit: 8192,
       name: `images/[name].[contenthash].[ext][query]`
     }
   },
@@ -51,7 +60,8 @@ let baseRules = [
     test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\..*)?$/i,
     loader: 'url-loader',
     options: {
-      limit: 3072,
+      esModule: false,
+      limit: 8192,
       name: `media/[name].[contenthash].[ext][query]`
     }
   },
@@ -59,7 +69,8 @@ let baseRules = [
     test: /\.(woff2?|eot|ttf|otf)(\..*)?$/g,
     loader: 'url-loader',
     options: {
-      limit: 3072,
+      esModule: false,
+      limit: 8192,
       name: `fonts/[name].[contenthash].[ext][query]`
     }
   }

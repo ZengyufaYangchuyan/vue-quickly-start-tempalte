@@ -2,6 +2,7 @@ const path = require('path');
 const rules = require('./config/webpack/rules');
 const plugins = require('./config/webpack/plugins');
 const devServer = require('./config/webpack/devServer');
+const {SrcDir, SrcStaticImagesDir, SrcStaticImagesSpritesDir} = require('./config/webpack/direction');
 
 /**
  * 自动启用模式
@@ -44,9 +45,9 @@ const baseBuildPath = path.resolve(__dirname, './dist');
  * bundle、asset 和其他你所打包或使用 webpack 载入的任何内容。
  */
 const output = {
-  filename: `js/[name]_[hash].js`,
+  filename: `js/[name]_[chunkhash].js`,
   path: baseBuildPath,
-  publicPath: ''
+  publicPath: '/'
 };
 
 /**
@@ -71,10 +72,17 @@ const resolve = {
   /**
    * 起别名
    * @description 创建 import 或 require 的别名，来确保模块引入变得更简单
+   * @example
+   * js module 中： @import "@/style/theme"
+   * css module 中： @import "~@/style/theme"
+   * css 属性中： background: url("~@/assets/xxx.jpg")
+   * html 标签中： <img src="~@/assets/xxx.jpg" alt="alias">
    */
   alias: {
     vue$: "vue/dist/vue.esm.js",
-    src: path.resolve(__dirname, './src')
+    src: SrcDir,
+    images: SrcStaticImagesDir,
+    sprites: SrcStaticImagesSpritesDir
   },
   /**
    * 自动解析规定的扩展
@@ -124,27 +132,36 @@ const performance = {
 };
 
 /**
- * 分割JS代码
+ * 分割JS代码，用于缓存长效代码
  */
 const splitChunks = {
-  chunks: "async",
+  chunks: "all",
   minSize: 30000,
   minChunks: 1,
   maxAsyncRequests: 5,
   maxInitialRequests: 3,
-  automaticNameDelimiter: '~',
+  automaticNameDelimiter: '_',
   name: true,
   cacheGroups: {
     vendors: {
+      name: 'vendors',
       test: /[\\/]node_modules[\\/]/,
       priority: -10
     },
     default: {
+      name: 'default',
       minChunks: 2,
       priority: -20,
       reuseExistingChunk: true
     }
   }
+};
+
+/**
+ * 在构建代码中移出manifest，避免构建时更新不必要的代码
+ */
+const runtimeChunk = {
+  name: 'manifest'
 };
 
 let config = {
@@ -159,7 +176,8 @@ let config = {
   plugins,
   performance,
   optimization: {
-    splitChunks
+    splitChunks,
+    runtimeChunk
   }
 };
 
