@@ -61,6 +61,12 @@ const config = {
 module.exports = {
   /**
    * 是否开启Gizp压缩
+   * @description 在开启gzip压缩，gizp配置在开启的时候，需要在nginx中配置相应的资源返回
+   * @link http://nginx.org/en/docs/http/ngx_http_gzip_static_module.html
+   * gzip on;
+   * gzip_disable "msie6";
+   * gzip_buffers 32 4k;
+   * gzip_static on;
    */
   open: true,
   /**
