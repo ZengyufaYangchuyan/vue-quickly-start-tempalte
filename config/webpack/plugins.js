@@ -1,9 +1,12 @@
-const HtmlWebpackPluginConfig = require('./html');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const webpack = require('webpack');
+
+const HtmlWebpackPluginConfig = require('./html');
+const { open: useCompressionPlugin, config: CompressionPluginConfig} = require('./gzip');
 
 /**
  * 是否为产品
@@ -20,11 +23,18 @@ let plugins = [
    */
   new CleanWebpackPlugin(),
   new VueLoaderPlugin(),
+  /**
+   * 用于避免不必要的HashId变更
+   */
   new webpack.HashedModuleIdsPlugin({
     hashFunction: 'sha256',
     hashDigest: 'hex',
     hashDigestLength: 20
   }),
+  /**
+   * gzip压缩
+   */
+  ...(useCompressionPlugin ? [new CompressionPlugin(CompressionPluginConfig)] : []),
   /**
    * 指定html模板和设置生成模板规则
    */
