@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import VueRouter from 'vue-router';
+import router from './router';
 import App from './App';
 
 /**
@@ -6,6 +8,9 @@ import App from './App';
  * @type {Boolean}
  */
 let isProduction = process.env.NODE_ENV === 'production';
+
+
+Vue.use(VueRouter);
 
 /**
  * 配置是否允许 vue-devtools 检查代码
@@ -16,6 +21,7 @@ Vue.config.devtools = !isProduction;
 
 let vm = new Vue({
   components: {App},
+  router,
   template: '<App/>'
 });
 

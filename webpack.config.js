@@ -1,8 +1,7 @@
-const path = require('path');
 const rules = require('./config/webpack/rules');
 const plugins = require('./config/webpack/plugins');
 const devServer = require('./config/webpack/devServer');
-const {SrcDir, SrcStaticImagesDir, SrcStaticImagesSpritesDir} = require('./config/webpack/direction');
+const {setAssetsDir} = require('./config/webpack/common');
 
 /**
  * 自动启用模式
@@ -31,13 +30,13 @@ const devtool = isProduction ? 'cheap-module-source-map' : 'cheap-module-eval-so
  * 如果传递一个数组，那么数组的每一项都会执行。
  */
 const entry = {
-  main: path.resolve(__dirname, './src/main.js')
+  main: setAssetsDir('src/main.js')
 };
 
 /**
  * 项目打包后基础地址
  */
-const baseBuildPath = path.resolve(__dirname, './dist');
+const baseBuildPath = setAssetsDir('dist');
 
 /**
  * 输出
@@ -80,9 +79,9 @@ const resolve = {
    */
   alias: {
     vue$: "vue/dist/vue.esm.js",
-    src: SrcDir,
-    images: SrcStaticImagesDir,
-    sprites: SrcStaticImagesSpritesDir
+    pages: setAssetsDir('src/pages'),
+    images: setAssetsDir('static/images'),
+    sprites: setAssetsDir('static/images/sprites')
   },
   /**
    * 自动解析规定的扩展

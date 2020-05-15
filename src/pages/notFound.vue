@@ -1,16 +1,13 @@
 <script>
 export default {
-  data() {
+  data () {
     return {};
-  },
-  methods: {}
+  }
 };
 </script>
 
 <template>
-  <div class="app">
-    <router-view />
-  </div>
+  <div>404 not found</div>
 </template>
 
 <style lang="stylus"></style>

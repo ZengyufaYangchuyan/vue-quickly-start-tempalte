@@ -5,29 +5,32 @@ const path = require('path');
  */
 const pathTreeConfig = [
   [
-    'src',
+    'src'
+  ],
+  [
+    'static',
     [
-      'static',
+      'css',
       [
-        'css',
+        'images',
         [
-          'images',
-          [
-            'sprites'
-          ]
-        ],
-        'js',
-        'font',
-        'media'
-      ]
+          'sprites'
+        ]
+      ],
+      'js',
+      'font',
+      'media'
     ]
   ],
   [
-    'webpack',
+    'config',
     [
-      'postcss',
+      'webpack',
       [
-        'sprites'
+        'postcss',
+        [
+          'sprites'
+        ]
       ]
     ]
   ]
@@ -121,7 +124,7 @@ const BuildDir = path.resolve(BaseDir, `./build`);
 /**
  * 项目构建地址配置
  */
-let buildPathConfig = setPathConfig({ config: {}, parentDirName: 'Build', parentDir: BuildDir, currentDir: pathTreeConfig[0][1] });
+let buildPathConfig = setPathConfig({ config: {}, parentDirName: 'Build', parentDir: BuildDir, currentDir: pathTreeConfig[1] });
 
 /**
  * 基础路径配置

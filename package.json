@@ -8,6 +8,10 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js --progress --colors",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.js --progress --colors",
     "build:dll": "webpack --config ./config/webpack/dll/index.js",
+    "npmInstall": "npm install",
+    "npmCachClean": "npm cache clean -f",
+    "cnpmInstall": "cnpm install",
+    "cnpmCachClean": "cnpm cache clean -f",
     "test": "npm run test",
     "gitCommit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
@@ -73,7 +77,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.6"
   },
   "config": {
     "commitizen": {
