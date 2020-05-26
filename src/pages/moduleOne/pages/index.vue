@@ -31,7 +31,7 @@ export default {
         :key="item.path"
         :to="item.path"
       >
-        {{ item.name }}
+        {{ item.pathName }}
       </router-link>
     </template>
     <router-view />

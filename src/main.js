@@ -2,6 +2,12 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import router from './router';
 import App from './App';
+import getBorwserInfo from '../config/borwser';
+
+/**
+ * 设置浏览器配置
+ */
+window.borwserInfo = getBorwserInfo();
 
 /**
  * 当前是否处于产品状态

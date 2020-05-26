@@ -5,10 +5,10 @@ export default {
   },
   methods: {
     toPath () {
-      console.log(this);
       this.$router.push({
-        path: 'moduleOne'
+        path: '/home/moduleOne'
       });
+      console.log(this.$router);
     }
   }
 };
@@ -22,6 +22,11 @@ export default {
     >
       跳转到模块1
     </div>
+    <router-link
+      to="/home/moduleOne"
+    >
+      跳转到模块1
+    </router-link>
     <router-view />
   </div>
 </template>

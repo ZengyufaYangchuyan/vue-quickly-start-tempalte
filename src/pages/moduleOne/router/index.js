@@ -8,6 +8,10 @@ const router = {
   component: index,
   children: [
     {
+      path: '',
+      redirect: 'pageOne'
+    },
+    {
       path: 'pageOne',
       component: pageOne
     },
