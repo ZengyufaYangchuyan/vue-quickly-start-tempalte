@@ -1,8 +1,38 @@
 import Vue from 'vue';
+
+/**
+ * plugins
+ * @description vue中使用到的插件
+ */
 import VueRouter from 'vue-router';
-import router from './router';
-import App from './App';
+import Vuex from 'vuex';
+
+/**
+ * baseFn
+ * @description 基础方法
+ */
 import getBorwserInfo from '../config/borwser';
+
+/**
+ * setting
+ * @description vue配置
+ */
+import router from './router';
+import getStore from './vuex';
+
+/**
+ * components
+ * @description 根组件
+ */
+import App from './App';
+
+/**
+ * vue 用到的插件列表
+ */
+let vueUsePluginList = [VueRouter, Vuex];
+vueUsePluginList.forEach(item => {
+  Vue.use(item);
+});
 
 /**
  * 设置浏览器配置
@@ -15,9 +45,6 @@ window.borwserInfo = getBorwserInfo();
  */
 let isProduction = process.env.NODE_ENV === 'production';
 
-
-Vue.use(VueRouter);
-
 /**
  * 配置是否允许 vue-devtools 检查代码
  * @description 开发版本默认为 true，生产版本默认为 false。
@@ -27,6 +54,7 @@ Vue.config.devtools = !isProduction;
 
 let vm = new Vue({
   components: {App},
+  store: getStore(),
   router,
   template: '<App/>'
 });
