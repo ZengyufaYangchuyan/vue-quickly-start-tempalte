@@ -16,6 +16,7 @@
 
 * **borwser.js:** 添加获取浏览器信息 ([855b45c](https://github.com/ZengyufaYangchuyan/vue-quickly-start-tempalte/commit/855b45c7bef8e7127f703d7896971330b8ec85c0))
 * **vue-router:** 项目添加vue-router，项目设定目录结构 ([47b69cd](https://github.com/ZengyufaYangchuyan/vue-quickly-start-tempalte/commit/47b69cdde4d8a1bdc3f7687fc9b2129f665b9da8))
+* **vuex:** 新增vuex中心数据store ([93bae00](https://github.com/ZengyufaYangchuyan/vue-quickly-start-tempalte/commit/93bae000981fbbb7c84e22e9ada0cba9c7cf56f7))
 
 
 ### BREAKING CHANGES

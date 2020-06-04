@@ -246,4 +246,4 @@ const getBorwserInfo = () => {
   };
 };
 
-export default getBorwserInfo;
+export default getBorwserInfo();

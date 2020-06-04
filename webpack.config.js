@@ -1,6 +1,7 @@
 const rules = require('./config/webpack/rules');
 const plugins = require('./config/webpack/plugins');
 const devServer = require('./config/webpack/devServer');
+const path = require('path');
 const {setAssetsDir} = require('./config/webpack/common');
 
 /**
@@ -81,7 +82,9 @@ const resolve = {
     vue$: "vue/dist/vue.esm.js",
     pages: setAssetsDir('src/pages'),
     images: setAssetsDir('static/images'),
-    sprites: setAssetsDir('static/images/sprites')
+    sprites: setAssetsDir('static/images/sprites'),
+    js: setAssetsDir('static/js'),
+    config: path.resolve(__dirname, './config')
   },
   /**
    * 自动解析规定的扩展

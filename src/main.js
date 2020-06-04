@@ -11,7 +11,7 @@ import Vuex from 'vuex';
  * baseFn
  * @description 基础方法
  */
-import getBorwserInfo from '../config/borwser';
+import borwserInfo from '../config/borwser';
 
 /**
  * setting
@@ -37,7 +37,7 @@ vueUsePluginList.forEach(item => {
 /**
  * 设置浏览器配置
  */
-window.borwserInfo = getBorwserInfo();
+window.borwserInfo = borwserInfo;
 
 /**
  * 当前是否处于产品状态
