@@ -6,6 +6,7 @@ import Vue from 'vue';
  */
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+import http from './axios';
 
 /**
  * baseFn
@@ -29,7 +30,7 @@ import App from './App';
 /**
  * vue 用到的插件列表
  */
-let vueUsePluginList = [VueRouter, Vuex];
+let vueUsePluginList = [VueRouter, Vuex, http];
 vueUsePluginList.forEach(item => {
   Vue.use(item);
 });

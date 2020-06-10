@@ -1,20 +1,21 @@
 import axios from 'axios';
 import common from 'js/common';
-import {formatDate} from 'js/format';
+import {formatDate} from 'js/format.js';
+import {openIndexedDB, createObjectStore, addIndexedDB} from 'js/indexedDB';
 import IP from 'config/serverIP';
 
 window.IPConfig = {
   IP
 };
 
-/**
- * 记录请求错误
- * @type {Array}
- */
-window.HttpRequest = {
-  success: [],
-  error: []
-};
+// /**
+//  * 记录请求错误
+//  * @type {Array}
+//  */
+// window.HttpRequest = {
+//   success: [],
+//   error: []
+// };
 
 /**
  * 默认配置
@@ -144,11 +145,77 @@ const failFn = (
     requestConfig
   }
 ) => {
-  // 记录错误信息
-  window.HttpRequest.error.push({
-    time: JSON.stringify(common.formatDate(timeStamp)),
-    request: requestConfig,
-    response: res
+  // // 记录错误信息
+  // window.HttpRequest.error.push({
+  //   time: JSON.stringify(common.formatDate(timeStamp)),
+  //   request: requestConfig,
+  //   response: res
+  // });
+  let databaseName = 'httpRequest', version = 1, tableName = 'error', mode = 'readwrite';
+  openIndexedDB({
+    databaseName,
+    version
+  }).then(result => {
+    return createObjectStore({
+      indexedDB: result,
+      tableName,
+      tableConfig: {
+        keyPath: 'id',
+        autoIncrement: true
+      },
+      mode
+    });
+  }).then(result => {
+    let {isNew, objectStore} = result;
+    if (isNew) {
+      let tableIndexs = [
+        {
+          name: 'time',
+          keyPath: 'time',
+          options: {
+            unique: false
+          }
+        },
+        {
+          name: 'request',
+          keyPath: 'request',
+          options: {
+            unique: false
+          }
+        },
+        {
+          name: 'response',
+          keyPath: 'response',
+          options: {
+            unique: false
+          }
+        },
+        {
+          name: 'requsetType',
+          keyPath: 'requsetType',
+          options: {
+            unique: false
+          }
+        }
+      ];
+      tableIndexs.forEach(item => {
+        let {name, keyPath, options} = item;
+        objectStore.createIndex(name, keyPath, options);
+      });
+    }
+    return addIndexedDB({
+      objectStore,
+      value: {
+        requsetType,
+        time: timeStamp,
+        request: requestConfig,
+        response: res
+      }
+    });
+  }).then(result => {
+    console.log(`错误数据已经添加至indexedDB: ${databaseName}`, result);
+  }).catch(error => {
+    console.log(error);
   });
   if (typeof fail === 'function') {
     return fail(res);
@@ -166,7 +233,9 @@ const completeFn = (
     timeStamp,
     requestConfig
   }
-) => {};
+) => {
+  console.log(formatDate(timeStamp), requestConfig, res);
+};
 
 /**
  * 接口请求

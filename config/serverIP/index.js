@@ -33,7 +33,7 @@ let requestDomainAndPortToUrlArr = [
     description: '本地访问',
     domian: 'localhost',
     port: {
-      default: `local1`
+      default: `test`
     }
   },
   {
