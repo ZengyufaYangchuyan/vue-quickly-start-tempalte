@@ -190,11 +190,12 @@ const defaultOptions = {
 };
 
 module.exports = {
-  openSprites: spritesConfig.open,
+  open: spritesConfig.open,
   /**
    * 对除了外部引入和base64的图片资源，且满足在规定路径下的规定格式图片资源进行雪花图处理
    */
   sprites: () => {
-    return sprites(spritesConfig.config.options || defaultOptions);
+    let options = JSON.stringify(spritesConfig.config.options) === '{}' ? defaultOptions : spritesConfig.config.options;
+    return sprites(options);
   }
 };

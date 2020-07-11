@@ -5,8 +5,11 @@ const autoprefixer = require('autoprefixer');
 /**
  * 生成雪碧图
  */
-const { openSprites, sprites } = require('./config/webpack/sprites');
-
+const { open: openSprites, sprites } = require('./config/webpack/sprites');
+/**
+ * 像素转换viewport
+ */
+const { open: openPxToViewport, pxToViewport } = require('./config/webpack/pxToViewport');
 /**
  *
  * @param {Object} file extname, dirname, basename
@@ -18,7 +21,8 @@ const getConfig = ({ file, options, env }) => {
     parser: file.extname === '.sss' ? 'sugarss' : false,
     plugins: [
       ...(openSprites ? [sprites()] : []),
-      autoprefixer
+      autoprefixer,
+      ...(openPxToViewport ? [pxToViewport()] : [])
     ]
   };
 };
